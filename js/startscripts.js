@@ -387,7 +387,18 @@ function previewMealKcalVal() {
     }
 
     let mealPreviewer = document.querySelector("#addMealKcalPreview");        
-    let kcal = Number(selectedMeal.options[selectedMeal.selectedIndex].getAttribute("data-kcal"));
+    let kcal;
+    
+    try {
+        kcal = Number(selectedMeal.options[selectedMeal.selectedIndex].getAttribute("data-kcal"));
+    } catch(e) {
+        if (e instanceof TypeError) {
+            kcal = 0;
+        } else {
+            console.log("Calorific encountered an error: " + e);
+        }
+    }
+
     kcal = Math.ceil(kcal * amount);
 
     let runningTotal = kcal + Number(document.querySelector("#addMealTotalKcal").value);
