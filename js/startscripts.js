@@ -392,7 +392,7 @@ function previewMealKcalVal() {
     try {
         kcal = Number(selectedMeal.options[selectedMeal.selectedIndex].getAttribute("data-kcal"));
     } catch(e) {
-        if (e instanceof TypeError) {
+        if(e instanceof TypeError) {
             kcal = 0;
         } else {
             console.log("Calorific encountered an error: " + e);
