@@ -21,5 +21,8 @@ if(isset($_GET['newMealSubmitted']) && $_GET['newMealSubmitted'] == "1") {
     mysqli_query($link, $query);
     mysqli_close($link);
 
-    header("Location: ./?t=log&saved=1");
+    if ( basename($_SERVER["PHP_SELF"]) === "index.php" ) {
+      header("Location: ./?t=log&saved=1");
+    }
+
 }
